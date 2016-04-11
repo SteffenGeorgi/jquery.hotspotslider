@@ -1,4 +1,4 @@
-# jquery.hotspotslider
+# jQuery.hotspotslider
 Simple responsive image slider with hotspots
 
 # Changelog
