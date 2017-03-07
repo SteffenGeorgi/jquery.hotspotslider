@@ -1,62 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Unbenanntes Dokument</title>
+<title>Hotspotslider - Example 01</title>
+<link rel="stylesheet" href="jquery.hotspotslider.css">
 <script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
+<script src="jquery.hotspotslider.js"></script>
 <script>
-(function($) {
-
-    $.fn.hotspotSlider = function() {
-				
-			var container = $(this);
-			var slides = new Array();
-			
-			
-			/* push all slides in an array */
-			container.children(".hotspotslider-slide").each(function(index, element) {
-        slides.push($(this));
-      });	
-			
-			/* define first slide as active */
-			var slides_current = 0;
-			$(slides[0]).addClass("active");
-			
-			/* max count for all slides */
-			var slides_count = slides.length;
-			
-			/* append buttons for next and previous slide */
-			if(slides_count > 1) {
-				container.append("<div class='button-next'></div>");
-				container.append("<div class='button-prev'></div>");
-			}
-			
-			$(container).on( "click", ".button-next", function() {
-				if( (slides_current + 1) == slides_count) {
-					var next_slide = 0;
-				} else {
-					var next_slide = slides_current + 1;
-				}
-				$(slides[next_slide]).fadeIn("fast").addClass("active");
-				$(slides[(slides_current)]).fadeOut("fast").removeClass("active");
-				slides_current = next_slide;
-			});
-			
-			$(container).on( "click", ".button-prev", function() {
-				if(slides_current == 0) {
-					var prev_slide = slides_count - 1;
-				} else {
-					var prev_slide = slides_current - 1;
-				}
-				$(slides[prev_slide]).fadeIn("fast").addClass("active");
-				$(slides[(slides_current)]).fadeOut("fast").removeClass("active");
-				slides_current = prev_slide;
-			});
-	
-    }
-
-}(jQuery));
-
 $(document).ready( function() {
     $('#hotspotslider').hotspotSlider();
 });
@@ -67,92 +17,8 @@ $(document).ready( function() {
 	width:100%;
 	max-width:800px;
 	margin:0px auto;
-}
-/*  --------- */
-#hotspotslider {
-	position:relative;
-	overflow:hidden;
-}
-#hotspotslider .button-next,
-#hotspotslider .button-prev {
-	display:none;
-}
-#hotspotslider:hover .button-next {
-	width: 0px;
-	height: 0px;
-	-webkit-transform:rotate(360deg);
-	border-style: solid;
-	border-width: 20px 0 20px 35px;
-	border-color: transparent transparent transparent #000000;
-	cursor:pointer;
-	opacity:0.3;
-	position:absolute;
-	top:40%;
-	z-index:100;
-	right:10px;
-	display:block;
-}
-#hotspotslider:hover .button-prev {
-	width: 0px;
-	height: 0px;
-	-webkit-transform:rotate(360deg);
-	border-style: solid;
-	border-width: 20px 35px 20px 0;
-	border-color: transparent #000000 transparent transparent;
-	cursor:pointer;
-	opacity:0.3;
-	position:absolute;
-	top:40%;
-	z-index:100;
-	left:10px;
-	display:block;
-}
-.hotspotslider-slide {
-	position:absolute;
-	width:100%;
-	left:0px;
-	top:0px;
-	z-index:5;
-	display:none;
-}
-.hotspotslider-slide.active {
-	position:relative;
-	width:100%;
-	left:0px;
-	top:0px;
-	z-index:10;
-	display:block;
-}
-.hotspotslider-slide img {
-	width:100%;
-}
-.hotspotslider-hotspot {
-	z-index:6;
-	position:absolute;
-}
-.hotspotslider-hotspot .hotspot-headline,
-.hotspotslider-hotspot .hotspot-content {
-	display:none;
-}
-.hotspotslider-hotspot:before {
-	content: "";
-	background:#000;
-	width:10px;
-	height:10px;
-	position:absolute;
-	left:-5px;
-	top:-5px;
-	border-radius:5px;
-	cursor:pointer;
-}
-.hotspotslider-hotspot:hover {
-	background:#fff;
-	padding:8px 10px;
-	border:1px solid #ccc;
-}
-.hotspotslider-hotspot:hover .hotspot-headline,
-.hotspotslider-hotspot:hover .hotspot-content {
-	display:block;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
 }
 </style>
 </head>
@@ -164,20 +30,20 @@ $(document).ready( function() {
   <div id="hotspotslider">
     <div class="hotspotslider-slide">
       <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=1050%C3%97850&w=1050&h=850" />
-      <div class="hotspotslider-hotspot" style="left:10%; top:10%;">
+      <div class="hotspot" style="left:10%; top:10%;">
         <div class="hotspot-headline">Test</div>
         <div class="hotspot-content">Inhalt</div>
       </div>
-      <div class="hotspotslider-hotspot" style="left:30%; top:30%;">
+      <div class="hotspot" style="left:30%; top:30%;">
         <div class="hotspot-headline">Test</div>
         <div class="hotspot-content">Inhalt</div>
       </div>
     </div>
     <div class="hotspotslider-slide">
       <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=active%C3%97850&w=1050&h=850" />
-      <div class="hotspotslider-hotspot" style="left:90%; top:90%;">
+      <div class="hotspot" style="left:90%; top:90%;">
         <div class="hotspot-headline">Test</div>
-        <div class="hotspot-content">Inhalt</div>
+        <div class="hotspot-content">Inhalt sdfsdf sdfsdf sdf Inhalt sdfsdf sdfsdf sdf Inhalt sdfsdf sdfsdf sdf Inhalt sdfsdf sdfsdf sdf Inhalt sdfsdf sdfsdf sdf Inhalt sdfsdf sdfsdf sdf </div>
       </div>
     </div>
   </div>
